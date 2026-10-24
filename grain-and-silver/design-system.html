@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sistema de diseño — Grain & Silver</title>
+<meta name="description" content="Documentación del sistema de diseño atómico, tokens y accesibilidad de Grain & Silver.">
+<meta property="og:title" content="Sistema de diseño — Grain & Silver">
+<meta property="og:description" content="Documentación del sistema de diseño atómico, tokens y accesibilidad de Grain & Silver.">
+<meta name="theme-color" content="#121212">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="css/01-tokens.css">
+<link rel="stylesheet" href="css/02-atoms.css">
+<link rel="stylesheet" href="css/03-molecules.css">
+<link rel="stylesheet" href="css/04-organisms.css">
+<link rel="stylesheet" href="css/05-templates.css">
+</head>
+<body>
+<a class="t-skip" href="#main">Skip to content</a>
+<div class="t-page">
+<header class="o-header"><div class="o-header__inner">
+<a class="a-logo" href="index.html" aria-label="Grain &amp; Silver — home">G<span>&amp;</span>S</a>
+<nav class="o-header__nav" aria-label="Main"><ul><li><a class="m-nav-link" href="index.html">Home</a></li><li><a class="m-nav-link" href="journal.html">Journal</a></li><li><a class="m-nav-link" href="series.html">Series</a></li><li><a class="m-nav-link" href="shop.html">Shop</a></li><li><a class="m-nav-link" href="about.html">About</a></li></ul></nav>
+<a class="m-cart-link" href="shop.html" data-cart-link aria-label="Cart, 0 items"><span aria-hidden="true">Cart</span> <b data-cart-count aria-hidden="true">0</b></a>
+</div></header>
+<main id="main" tabindex="-1">
+<div class="t-container t-doc">
+<p class="a-kicker a-kicker--accent">Documentación</p>
+<h1 class="a-heading a-heading--xl" style="margin:.5rem 0 1rem">Sistema de diseño</h1>
+<p>Esta página documenta cómo está construido el sitio <b>Grain &amp; Silver</b> con Diseño Atómico: cada pieza de interfaz pertenece a un nivel (atoms → molecules → organisms → templates → pages) y vive en su propio archivo CSS.</p>
+
+<h2 class="a-heading a-heading--lg">1. Tokens</h2>
+<p>Todos los colores, tamaños y espacios salen de variables en <code>css/01-tokens.css</code>. Ningún componente usa valores sueltos.</p>
+<div class="t-swatches" style="margin-top:1rem"><div class="t-swatch"><div class="t-swatch__chip" style="background:#121212"></div><div class="t-swatch__info"><b>--ink</b><br>#121212 · Fondo principal<br>Contraste 16.6:1 (AAA)</div></div><div class="t-swatch"><div class="t-swatch__chip" style="background:#f4f1ea"></div><div class="t-swatch__info"><b>--paper</b><br>#f4f1ea · Texto principal<br>Contraste 16.6:1 (AAA)</div></div><div class="t-swatch"><div class="t-swatch__chip" style="background:#1c1c1e"></div><div class="t-swatch__info"><b>--card</b><br>#1c1c1e · Tarjetas<br>Contraste 15.1:1 (AAA)</div></div><div class="t-swatch"><div class="t-swatch__chip" style="background:#a8431f"></div><div class="t-swatch__info"><b>--sienna</b><br>#a8431f · Fondo de botón<br>Contraste 5.3:1 (AA)</div></div><div class="t-swatch"><div class="t-swatch__chip" style="background:#e07a52"></div><div class="t-swatch__info"><b>--sienna-text</b><br>#e07a52 · Acento (texto)<br>Contraste 6.3:1 (AA)</div></div><div class="t-swatch"><div class="t-swatch__chip" style="background:#ec6a6a"></div><div class="t-swatch__info"><b>--safe</b><br>#ec6a6a · Rojo de cuarto oscuro<br>Contraste 6.1:1 (AA)</div></div><div class="t-swatch"><div class="t-swatch__chip" style="background:#a9a59c"></div><div class="t-swatch__info"><b>--muted</b><br>#a9a59c · Texto secundario<br>Contraste 7.6:1 (AAA)</div></div></div>
+<p class="a-meta" style="margin-top:1rem">Escala tipográfica: 12, 13, 16, 20 px y fluida para títulos. El mínimo del sistema es 12 px (el prototipo original usaba 6–8 px).</p>
+
+<h2 class="a-heading a-heading--lg">2. Atoms</h2>
+<p>Elementos mínimos. Archivo: <code>css/02-atoms.css</code>.</p>
+<div class="t-demo">
+<a class="a-btn " href="#" >Primary <span aria-hidden="true">↗</span></a> <a class="a-btn a-btn--ghost" href="#" >Ghost <span aria-hidden="true">↗</span></a>
+<a class="a-link" href="#">Link</a>
+<span class="a-tag">Tag</span><span class="a-kicker a-kicker--accent">Kicker</span><span class="a-stamp">Stamp</span>
+<span class="a-price">$35.00</span><a class="a-logo" href="index.html" aria-label="Grain &amp; Silver — home">G<span>&amp;</span>S</a>
+<button type="button" class="a-icon-btn" data-bookmark aria-pressed="false" aria-label="Bookmark this entry"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg></button>
+</div>
+<div class="t-demo" style="display:block"><label class="a-label" for="ds-in">Label + input</label><input class="a-input" id="ds-in" placeholder="Placeholder"></div>
+
+<h2 class="a-heading a-heading--lg">3. Molecules</h2>
+<p>Combinaciones de atoms con una función. Archivo: <code>css/03-molecules.css</code>.</p>
+<table class="t-table"><thead><tr><th scope="col">Molécula</th><th scope="col">Compuesta por</th><th scope="col">Se usa en</th></tr></thead><tbody>
+<tr><td>Page heading</td><td>kicker + heading (+ date block)</td><td>Todas las páginas</td></tr>
+<tr><td>Nav link / Cart link</td><td>enlace + contador</td><td>Cabecera</td></tr>
+<tr><td>Series card</td><td>2 imágenes + número + título + enlace</td><td>Home, Series</td></tr>
+<tr><td>Product card</td><td>imagen + título + precio + botón</td><td>Home, Shop</td></tr>
+<tr><td>Portrait card</td><td>imagen + número + título + meta</td><td>Portraits</td></tr>
+<tr><td>Figure + caption</td><td>imagen + hora + exposición</td><td>Street Chronicles</td></tr>
+<tr><td>Spec (EXIF)</td><td>término + valor</td><td>Detail</td></tr>
+<tr><td>Form field</td><td>label + input</td><td>About</td></tr>
+<tr><td>Accordion item</td><td>summary + texto</td><td>About</td></tr>
+</tbody></table>
+
+<h2 class="a-heading a-heading--lg">4. Organisms</h2>
+<p>Secciones completas. Archivo: <code>css/04-organisms.css</code>.</p>
+<table class="t-table"><thead><tr><th scope="col">Organismo</th><th scope="col">Contiene</th></tr></thead><tbody>
+<tr><td>Site header</td><td>logo + navegación principal + cart link</td></tr>
+<tr><td>Hero</td><td>imagen + título + CTA</td></tr>
+<tr><td>Film card</td><td>bordes de película + foto + fecha + marcador</td></tr>
+<tr><td>Series list / Gallery / Portraits grid</td><td>rejillas de molecules</td></tr>
+<tr><td>Detail</td><td>foto con perforaciones + ficha técnica + CTA</td></tr>
+<tr><td>Feature product / Shop grid</td><td>producto destacado + tarjetas</td></tr>
+<tr><td>Bio / Contact form</td><td>retrato + citas + acordeones + formulario</td></tr>
+<tr><td>Site footer</td><td>enlaces + créditos</td></tr>
+</tbody></table>
+
+<h2 class="a-heading a-heading--lg">5. Templates</h2>
+<p>Esqueletos de página. Archivo: <code>css/05-templates.css</code>.</p>
+<ul class="t-doc__list">
+<li><b>Content page</b> (<code>.t-page</code> + <code>.t-container</code>): skip link, cabecera, contenido y pie. Usada en Journal, Series, Street Chronicles, Portraits, Detail, Shop y About.</li>
+<li><b>Home</b>: héroe a pantalla completa seguido de teasers (<code>.t-home-teasers</code>).</li>
+<li><b>Document</b> (<code>.t-doc</code>): esta página.</li>
+</ul>
+
+<h2 class="a-heading a-heading--lg">6. Pages</h2>
+<p>Los templates con contenido real: <code>index</code>, <code>journal</code>, <code>series</code>, <code>street-chronicles</code>, <code>portraits</code>, <code>detail</code>, <code>shop</code>, <code>about</code>. Cada una es un archivo HTML independiente.</p>
+
+<h2 class="a-heading a-heading--lg">7. Accesibilidad</h2>
+<ul class="t-doc__list">
+<li>Enlace «Skip to content», landmarks (<code>header</code>, <code>nav</code>, <code>main</code>, <code>footer</code>) y un solo <code>h1</code> por página con jerarquía ordenada.</li>
+<li><code>aria-current="page"</code> en la navegación; título y descripción únicos por página.</li>
+<li>Foco visible en todos los elementos interactivos; objetivos táctiles de al menos 44×44 px.</li>
+<li>Contraste de texto mínimo AA (ver tabla de colores); texto mínimo de 12 px.</li>
+<li>Formulario con <code>label</code> visibles (no solo placeholder), <code>autocomplete</code> y mensaje de estado con <code>role="status"</code>.</li>
+<li>Acordeón con <code>details/summary</code> nativo (teclado y lector de pantalla sin JS).</li>
+<li>Carrito y marcadores anunciados con <code>aria-live</code> / <code>aria-pressed</code>.</li>
+<li>Imágenes con <code>alt</code> descriptivo (decorativas con <code>alt=""</code>), dimensiones declaradas y carga diferida.</li>
+<li>Respeta <code>prefers-reduced-motion</code>.</li>
+</ul>
+</div>
+</main>
+<footer class="o-footer"><div class="o-footer__inner">
+<ul aria-label="Social links">
+<li><a class="a-link" href="https://www.instagram.com/">Instagram</a></li>
+<li><a class="a-link" href="https://www.are.na/">Are.na</a></li>
+<li><a class="a-link" href="mailto:hello@example.com">Email</a></li>
+<li><a class="a-link" href="design-system.html">Design system</a></li>
+</ul><p><b>© 2025 Lucas Vance</b></p></div>
+<p class="o-footer__credit">Photography sourced via Unsplash · Prototype for Lucas Vance</p></footer>
+</div>
+<p id="cart-status" class="u-visually-hidden" role="status" aria-live="polite"></p>
+<script src="js/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+/* ==========================================================
+   05 · TEMPLATES — esqueletos de página (sin contenido real)
+   ========================================================== */
+
+/* Enlace "saltar al contenido" (WCAG 2.4.1) */
+.t-skip { position: absolute; left: var(--space-4); top: -100px; z-index: 100; padding: var(--space-3) var(--space-4);
+  background: var(--paper); color: var(--ink); text-decoration: none; }
+.t-skip:focus { top: var(--space-3); }
+
+/* Plantilla A · Página de contenido: cabecera + contenedor + pie */
+.t-page { display: flex; flex-direction: column; min-height: 100vh; }
+.t-page > main { flex: 1; }
+.t-container { width: 100%; max-width: var(--container); margin: 0 auto; padding: var(--space-7) var(--space-5) 0; }
+.t-section + .t-section { margin-top: var(--space-8); }
+.t-section__head { margin-bottom: var(--space-6); }
+
+/* Plantilla B · Portada: héroe a pantalla completa + secciones de teaser */
+.t-home-teasers { display: grid; gap: var(--space-8); }
+
+/* Plantilla C · Galería: encabezado con metadatos + rejilla */
+.t-gallery-meta { margin-top: var(--space-3); color: var(--muted); font-size: var(--text-sm); }
+
+/* Plantilla D · Documento (design system) */
+.t-doc { max-width: 900px; }
+.t-doc h2 { margin: var(--space-7) 0 var(--space-4); }
+.t-doc h3 { margin: var(--space-5) 0 var(--space-3); }
+.t-doc p, .t-doc li { max-width: 68ch; }
+.t-doc ul.t-doc__list { list-style: disc; padding-left: var(--space-5); }
+.t-doc code { background: var(--card); padding: 2px 6px; }
+.t-swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: var(--space-3); }
+.t-swatch { border: 1px solid var(--line); }
+.t-swatch__chip { height: 64px; }
+.t-swatch__info { padding: var(--space-2) var(--space-3); font-size: var(--text-xs); line-height: 1.5; }
+.t-demo { padding: var(--space-5); border: 1px dashed var(--line); margin: var(--space-3) 0; display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center; }
+.t-table { width: 100%; border-collapse: collapse; font-size: var(--text-sm); }
+.t-table th, .t-table td { text-align: left; padding: var(--space-2) var(--space-3); border-bottom: 1px solid var(--line); vertical-align: top; }
+.t-table th { color: var(--muted); font-weight: 400; letter-spacing: .1em; text-transform: uppercase; font-size: var(--text-xs); }
